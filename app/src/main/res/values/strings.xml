@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tower Administration</string>
+
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="login_name_hint">Name</string>
+    <string name="login_mobile_number_hint">Mobile Number</string>
+
+    <string-array name="category_array">
+        <item>اختر الفئة</item>
+        <item>خدمات السكان</item>
+        <item>رواتب</item>
+        <item>مشتريات</item>
+        <item>صيانة</item>
+    </string-array>
+</resources>

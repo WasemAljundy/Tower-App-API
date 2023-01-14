@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Residents Administration"
+        android:id="@+id/menu_users_activity"
+        app:showAsAction="never" />
+    <item
+        android:title="Employee Administration"
+        android:id="@+id/menu_employees_activity"
+        app:showAsAction="never" />
+    <item
+        android:title="Operations"
+        android:id="@+id/menu_operations_activity"
+        app:showAsAction="never" />
+    <item
+        android:title="Advertisement"
+        android:id="@+id/menu_advertisement_activity"
+        app:showAsAction="never" />
+    <item
+        android:title="Logout"
+        android:id="@+id/menu_logout"
+        app:showAsAction="never" />
+
+</menu>
