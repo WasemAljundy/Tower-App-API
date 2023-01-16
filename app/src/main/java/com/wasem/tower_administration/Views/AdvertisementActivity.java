@@ -46,6 +46,7 @@ public class AdvertisementActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.advertisement_menu, menu);
@@ -88,7 +89,6 @@ public class AdvertisementActivity extends AppCompatActivity {
             public void onSuccess(List<Advertisement> list) {
                 advertisementList.addAll(list);
                 initializeAdvertisementAdapter();
-                Log.d("TEST-LIST", "onSuccess: "+advertisementList.size());
             }
 
             @Override

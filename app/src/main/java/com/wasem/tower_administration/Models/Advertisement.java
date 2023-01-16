@@ -19,4 +19,5 @@ public class Advertisement {
     @SerializedName("tower_name")
     @Expose
     public String towerName;
+
 }

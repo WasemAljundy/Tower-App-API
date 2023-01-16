@@ -8,13 +8,14 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AdvertisementApiController {
 
-    public void addAdvertisement(String title, String info, MultipartBody.Part image, ProcessCallback callback) {
+    public void addAdvertisement(RequestBody title, RequestBody info, MultipartBody.Part image, ProcessCallback callback) {
         Call<BaseResponse<Advertisement>> call = ApiController.getInstance().getRetrofitRequests().storeAdvertisement(title, info, image);
         call.enqueue(new Callback<BaseResponse<Advertisement>>() {
             @Override
@@ -39,7 +40,7 @@ public class AdvertisementApiController {
         });
     }
 
-    public void updateAdvertisement(int id, String _method, String title, String info, MultipartBody.Part image, ProcessCallback callback) {
+    public void updateAdvertisement(int id, RequestBody _method, RequestBody title, RequestBody info, MultipartBody.Part image, ProcessCallback callback) {
         Call<BaseResponse<Advertisement>> call = ApiController.getInstance().getRetrofitRequests().updateAdvertisement(id, _method, title, info, image);
         call.enqueue(new Callback<BaseResponse<Advertisement>>() {
             @Override

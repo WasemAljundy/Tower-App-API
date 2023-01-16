@@ -9,7 +9,9 @@ import com.wasem.tower_administration.Models.Operation;
 import com.wasem.tower_administration.Models.User;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -92,11 +94,11 @@ public interface RetrofitRequests {
 
     @Multipart
     @POST("advertisements")
-    Call<BaseResponse<Advertisement>> storeAdvertisement(@Part("title") String title, @Part("info") String info, @Part MultipartBody.Part image);
+    Call<BaseResponse<Advertisement>> storeAdvertisement(@Part("title") RequestBody title, @Part("info") RequestBody info, @Part MultipartBody.Part image);
 
     @Multipart
     @POST("advertisements/{id}")
-    Call<BaseResponse<Advertisement>> updateAdvertisement(@Path("id") int id, @Part("_method") String method, @Part("title") String title, @Part("info") String info, @Part MultipartBody.Part image);
+    Call<BaseResponse<Advertisement>> updateAdvertisement(@Path("id") int id, @Part("_method") RequestBody _method, @Part("title") RequestBody title, @Part("info") RequestBody info, @Part MultipartBody.Part image);
 
     @DELETE("advertisements/{id}")
     Call<BaseResponse> deleteAdvertisement(@Path("id") int id);
