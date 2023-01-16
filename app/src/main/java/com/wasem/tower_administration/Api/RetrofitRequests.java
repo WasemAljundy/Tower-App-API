@@ -38,11 +38,11 @@ public interface RetrofitRequests {
 
     @Multipart
     @POST("users")
-    Call<BaseResponse<User>> storeUser(@Part("name") String name, @Part("email") String email, @Part("mobile") String mobile, @Part("national_number") String national_number, @Part("family_members") String family_members, @Part("gender") char gender, @Part MultipartBody.Part image);
+    Call<BaseResponse<User>> storeUser(@Part("name") RequestBody name, @Part("email") RequestBody email, @Part("mobile") RequestBody mobile, @Part("national_number") RequestBody national_number, @Part("family_members") RequestBody family_members, @Part("gender") RequestBody gender, @Part MultipartBody.Part image);
 
     @Multipart
     @POST("users/{id}")
-    Call<BaseResponse<User>> updateUser(@Path("id") int id, @Part("_method") String method, @Part("name") String name, @Part("email") String email, @Part("mobile") String mobile, @Part("national_number") String national_number, @Part("family_members") String family_members, @Part("gender") char gender, @Part MultipartBody.Part image);
+    Call<BaseResponse<User>> updateUser(@Path("id") int id, @Part("_method") RequestBody method, @Part("name") RequestBody name, @Part("mobile") RequestBody mobile, @Part("national_number") RequestBody national_number, @Part("family_members") RequestBody family_members, @Part("gender") RequestBody gender, @Part MultipartBody.Part image);
 
     @DELETE("users/{id}")
     Call<BaseResponse> deleteUser(@Path("id") int id);

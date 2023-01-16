@@ -47,6 +47,7 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
     OperationApiController operationApiController = new OperationApiController();
     EmployeeActorSpinnerAdapter employeeActorSpinnerAdapter;
     UsersActorSpinnerAdapter usersActorSpinnerAdapter;
+    int operation_id;
     List<Employee> employeeList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
     String actorType, date;
@@ -62,18 +63,12 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
 
     private void setupView(){
         Intent intent = getIntent();
-        int id = intent.getIntExtra("operation_id",0);
+        operation_id = intent.getIntExtra("operation_id",0);
         String title =  intent.getStringExtra("operation_update_title");
-        if ( id != 0 && title != null) {
+        if ( operation_id != 0 && title != null) {
             binding.tvAddOperationWelcome.setText(title);
             binding.btnAddOperation.setVisibility(View.GONE);
             binding.btnUpdateOperation.setVisibility(View.VISIBLE);
-            binding.btnUpdateOperation.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    updateOperation(id);
-                }
-            });
         }
     }
 
@@ -87,6 +82,7 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
     private void setOnClickListeners() {
         binding.tvOperationDate.setOnClickListener(this);
         binding.btnAddOperation.setOnClickListener(this);
+        binding.btnUpdateOperation.setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +92,9 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
         }
         else if (view.getId() == R.id.btn_add_operation) {
             addOperation();
+        }
+        else if (view.getId() == R.id.btn_update_operation) {
+            updateOperation(operation_id);
         }
     }
 
@@ -144,10 +143,8 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
     public void onNothingSelected(AdapterView<?> adapterView) {}
 
     private void checkSpinnerCategory(int categoryId){
-        if (categoryId == 1) {
-            binding.spinnerActor.setEnabled(true);
-            usersActorSpinnerInitialize();
-            actorType = "Resident";
+        if (categoryId == 0) {
+            binding.spinnerActor.setEnabled(false);
         }
         else if (categoryId == 2) {
             binding.spinnerActor.setEnabled(true);
@@ -155,7 +152,9 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
             actorType = "Employee";
         }
         else {
-            binding.spinnerActor.setEnabled(false);
+            binding.spinnerActor.setEnabled(true);
+            usersActorSpinnerInitialize();
+            actorType = "Resident";
         }
     }
 

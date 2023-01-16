@@ -47,30 +47,4 @@ public class User {
     @Expose
     public String towerName;
 
-//    public void addUser(ProcessCallback callback) {
-//        Call<BaseResponse<User>> call = ApiController.getInstance().getRetrofitRequests().storeUser(name,email,mobile,nationalNumber,familyMembers,gender,imageUrl);
-//        call.enqueue(new Callback<BaseResponse<User>>() {
-//            @Override
-//            public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    callback.onSuccess(response.body().message);
-//                } else {
-//                    try {
-//                        String error = new String(response.errorBody().bytes(), StandardCharsets.UTF_8);
-//                        JSONObject jsonObject = new JSONObject(error);
-//                        Log.e("Retrofit-API", "onResponse: " + error);
-//                        Log.e("Retrofit-API", "onResponse: " + jsonObject.getString("message"));
-//                        callback.onFailure(jsonObject.getString("message"));
-//                    } catch (IOException | JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BaseResponse<User>> call, Throwable t) {
-//                callback.onFailure("Something went wrong");
-//            }
-//        });
-//    }
 }

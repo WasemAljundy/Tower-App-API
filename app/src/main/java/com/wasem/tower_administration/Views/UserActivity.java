@@ -15,12 +15,14 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import com.wasem.tower_administration.Adapters.UserAdapter;
 import com.wasem.tower_administration.Api.controllers.ApiController;
 import com.wasem.tower_administration.Api.controllers.ContentApiController;
+import com.wasem.tower_administration.Api.controllers.UserApiController;
 import com.wasem.tower_administration.Models.BaseResponse;
 import com.wasem.tower_administration.Models.User;
 import com.wasem.tower_administration.R;
 import com.wasem.tower_administration.databinding.ActivityUserBinding;
 import com.wasem.tower_administration.interfaces.AdapterListener;
 import com.wasem.tower_administration.interfaces.ListCallback;
+import com.wasem.tower_administration.interfaces.ProcessCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ import retrofit2.Response;
 public class UserActivity extends AppCompatActivity {
     ActivityUserBinding binding;
     ContentApiController contentApiController = new ContentApiController();
+    UserApiController userApiController = new UserApiController();
     List<User> users = new ArrayList<>();
     UserAdapter adapter;
 
@@ -109,18 +112,16 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void delete(int id) {
-        Call<BaseResponse> call = ApiController.getInstance().getRetrofitRequests().deleteUser(id);
-        call.enqueue(new Callback<BaseResponse>() {
+        userApiController.deleteUser(id, new ProcessCallback() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.isSuccessful()) {
-                    FancyToast.makeText(getApplicationContext(),"User Deleted Successfully!", Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
-                    recreate();
-                }
+            public void onSuccess(String message) {
+                FancyToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
+                recreate();
             }
+
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                FancyToast.makeText(getApplicationContext(),"Can't delete this User!",Toast.LENGTH_SHORT,FancyToast.ERROR,false).show();
+            public void onFailure(String message) {
+                FancyToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
             }
         });
     }
