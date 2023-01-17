@@ -43,7 +43,7 @@
                 android:id="@+id/img_user"
                 android:layout_width="@dimen/_75sdp"
                 android:layout_height="@dimen/_75sdp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_baseline_add_a_photo_24"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_gravity="center"/>
 

@@ -57,8 +57,6 @@ public class Admin {
                     try {
                         String error = new String(response.errorBody().bytes(), StandardCharsets.UTF_8);
                         JSONObject jsonObject = new JSONObject(error);
-                        Log.e("Retrofit-API", "onResponse: " + error);
-                        Log.e("Retrofit-API", "onResponse: " + jsonObject.getString("message"));
                         callback.onFailure(jsonObject.getString("message"));
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();

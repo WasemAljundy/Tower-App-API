@@ -27,7 +27,7 @@
         android:layout_width="@dimen/_75sdp"
         android:layout_height="@dimen/_75sdp"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_add_employee_welcome"
         app:layout_constraintHorizontal_bias="0.5"
@@ -101,9 +101,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/et_employee_mobile_number"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/et_employee_mobile_number"
         app:layout_constraintTop_toBottomOf="@+id/et_employee_mobile_number"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.11" />
 
     <EditText
         android:id="@+id/et_employee_national_id_number"
@@ -125,7 +126,22 @@
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/et_employee_national_id_number"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/et_employee_national_id_number"
+        app:layout_constraintTop_toBottomOf="@+id/et_employee_national_id_number"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <Button
+        android:id="@+id/btn_update_employee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Update Employee"
+        android:background="@drawable/btn_shape"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/et_employee_national_id_number"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/et_employee_national_id_number"
         app:layout_constraintTop_toBottomOf="@+id/et_employee_national_id_number"
         app:layout_constraintVertical_bias="0.34" />

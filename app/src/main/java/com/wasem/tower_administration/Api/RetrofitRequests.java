@@ -28,6 +28,18 @@ public interface RetrofitRequests {
     @POST("auth/login")
     Call<BaseResponse<Admin>> login(@Field("email") String email, @Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("auth/forget-password")
+    Call<BaseResponse<Admin>> forgetPassword(@Field("email") String email);
+
+    @FormUrlEncoded
+    @POST("auth/reset-password")
+    Call<BaseResponse<Admin>> resetPassword(@Field("email") String email, @Field("code") String code, @Field("password") String password, @Field("password_confirmation") String password_confirmation);
+
+    @FormUrlEncoded
+    @POST("auth/change-password")
+    Call<BaseResponse<Admin>> changePassword(@Field("current_password") String current_password, @Field("new_password") String new_password, @Field("new_password_confirmation") String new_password_confirmation);
+
     @GET("auth/logout")
     Call<BaseResponse> logout();
 
@@ -54,11 +66,11 @@ public interface RetrofitRequests {
 
     @Multipart
     @POST("employees")
-    Call<BaseResponse<Employee>> storeEmployee(@Part("name") String name, @Part("mobile") String mobile, @Part("national_number") String national_number, @Part MultipartBody.Part image);
+    Call<BaseResponse<Employee>> storeEmployee(@Part("name") RequestBody name, @Part("mobile") RequestBody mobile, @Part("national_number") RequestBody national_number, @Part MultipartBody.Part image);
 
     @Multipart
-    @PUT("employees/{id}")
-    Call<BaseResponse<Employee>> updateEmployee(@Path("id") int id, @Part("name") String name, @Part("mobile") String mobile, @Part("national_number") String national_number, @Part MultipartBody.Part image, @Part("_method") String method);
+    @POST("employees/{id}")
+    Call<BaseResponse<Employee>> updateEmployee(@Path("id") int id, @Part("name") RequestBody name, @Part("mobile") RequestBody mobile, @Part("national_number") RequestBody national_number, @Part MultipartBody.Part image, @Part("_method") RequestBody method);
 
     @DELETE("employees/{id}")
     Call<BaseResponse> deleteEmployee(@Path("id") int id);

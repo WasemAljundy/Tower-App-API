@@ -20,6 +20,63 @@ public class AuthApiController {
         }
     }
 
+    public void forgetPassword(String email, ProcessCallback callback) {
+        Call<BaseResponse<Admin>> call = ApiController.getInstance().getRetrofitRequests().forgetPassword(email);
+        call.enqueue(new Callback<BaseResponse<Admin>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Admin>> call, Response<BaseResponse<Admin>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body().message);
+                } else {
+                    callback.onFailure("No data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Admin>> call, Throwable t) {
+                callback.onFailure("Something went wrong!");
+            }
+        });
+    }
+
+    public void resetPassword(String email, String code, String password, String password_confirmation, ProcessCallback callback) {
+        Call<BaseResponse<Admin>> call = ApiController.getInstance().getRetrofitRequests().resetPassword(email, code, password, password_confirmation);
+        call.enqueue(new Callback<BaseResponse<Admin>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Admin>> call, Response<BaseResponse<Admin>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body().message);
+                } else {
+                    callback.onFailure("No data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Admin>> call, Throwable t) {
+                callback.onFailure("Something went wrong!");
+            }
+        });
+    }
+
+    public void changePassword(String current_password, String new_password, String new_password_confirm, ProcessCallback callback) {
+        Call<BaseResponse<Admin>> call = ApiController.getInstance().getRetrofitRequests().changePassword(current_password, new_password, new_password_confirm);
+        call.enqueue(new Callback<BaseResponse<Admin>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Admin>> call, Response<BaseResponse<Admin>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body().message);
+                } else {
+                    callback.onFailure("No data");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Admin>> call, Throwable t) {
+                callback.onFailure("Something went wrong!");
+            }
+        });
+    }
+
     public void logout(ProcessCallback callback) {
         Call<BaseResponse> call = ApiController.getInstance().getRetrofitRequests().logout();
         call.enqueue(new Callback<BaseResponse>() {

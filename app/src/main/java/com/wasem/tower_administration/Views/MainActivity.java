@@ -42,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         adapter.notifyDataSetChanged();

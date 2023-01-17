@@ -121,7 +121,7 @@ public class UserActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(String message) {
-                FancyToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
+                FancyToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,FancyToast.ERROR,false).show();
             }
         });
     }

@@ -134,7 +134,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void updateUser() {
-        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), "PUT");
+        RequestBody bodyMethod = RequestBody.create(MediaType.parse("multipart/form-data"), "PUT");
         RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), binding.etUserFullname.getText().toString());
         RequestBody mobile = RequestBody.create(MediaType.parse("multipart/form-data"), binding.etUserMobileNumber.getText().toString());
         RequestBody nationalNumber = RequestBody.create(MediaType.parse("multipart/form-data"), binding.etUserNationalID.getText().toString());
@@ -146,7 +146,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         else {
             gender = RequestBody.create(MediaType.parse("multipart/form-data"), "F");
         }
-        userApiController.updateUser(user_id, requestFile, name, mobile, nationalNumber, familyMembers, gender, file, new ProcessCallback() {
+        userApiController.updateUser(user_id, bodyMethod, name, mobile, nationalNumber, familyMembers, gender, file, new ProcessCallback() {
             @Override
             public void onSuccess(String message) {
                 FancyToast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
