@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.wasem.tower_administration.databinding.ActivitySplashBinding;
 import com.wasem.tower_administration.prefs.AppSharedPreferences;
 
@@ -16,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activitySplashBinding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(activitySplashBinding.getRoot());
+        animationView();
     }
 
     @Override
@@ -30,8 +33,12 @@ public class SplashActivity extends AppCompatActivity {
         finish();
     }
 
+    private void animationView() {
+        YoYo.with(Techniques.RotateIn).duration(1500).playOn(activitySplashBinding.imgSplashLogo);
+        YoYo.with(Techniques.RubberBand).duration(2000).playOn(activitySplashBinding.tvAppNameSplash);
+    }
+
     private void controlSplashActivity() {
-        //3000ms - 3s
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

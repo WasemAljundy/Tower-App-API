@@ -44,6 +44,7 @@ dependencies {
     implementation 'io.github.shashank02051997:FancyToast:2.0.1'               // Custom Toast
     implementation 'com.intuit.sdp:sdp-android:1.1.0'                          // sdp
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'                 // Date picker
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'            // animation
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

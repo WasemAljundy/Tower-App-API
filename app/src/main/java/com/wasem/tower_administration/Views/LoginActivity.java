@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.shashank.sony.fancytoastlib.FancyToast;
 import com.wasem.tower_administration.Api.controllers.AuthApiController;
 import com.wasem.tower_administration.Models.Admin;
 import com.wasem.tower_administration.R;
@@ -22,18 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
         initializeView();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-//        finish();
     }
 
     private void initializeView() {
@@ -64,15 +55,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         authApiController.login(getAdmin(), new ProcessCallback() {
             @Override
             public void onSuccess(String message) {
-                Log.d("Retrofit", "onSuccess: ");
-                Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_LONG).show();
+                FancyToast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT,FancyToast.SUCCESS,false).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             @Override
             public void onFailure(String message) {
-                Log.d("Retrofit", "onFailure: ");
                 Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_LONG).show();
             }
         });

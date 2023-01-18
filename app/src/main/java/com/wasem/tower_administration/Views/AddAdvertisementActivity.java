@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.wasem.tower_administration.databinding.ActivityAddAdvertisementBindin
 import com.wasem.tower_administration.interfaces.ProcessCallback;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -33,7 +35,7 @@ public class AddAdvertisementActivity extends AppCompatActivity implements View.
     AdvertisementApiController advertisementApiController = new AdvertisementApiController();
     int adsId;
     private ActivityResultLauncher<String> permissionResultLauncher;
-    private ActivityResultLauncher<Void> cameraResultLauncher;
+    private ActivityResultLauncher<String> getImageResultLauncher;
     private Bitmap imageBitmap;
     private MultipartBody.Part file;
 
@@ -125,18 +127,22 @@ public class AddAdvertisementActivity extends AppCompatActivity implements View.
             @Override
             public void onActivityResult(Boolean result) {
                 if (result) {
-                    cameraResultLauncher.launch(null);
+                    getImageResultLauncher.launch("image/*");
                 }
             }
         });
 
-        cameraResultLauncher = registerForActivityResult(new ActivityResultContracts.TakePicturePreview(), new ActivityResultCallback<Bitmap>() {
+        getImageResultLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
-            public void onActivityResult(Bitmap result) {
+            public void onActivityResult(Uri result) {
                 if (result != null) {
-                    imageBitmap = result;
-                    binding.tvAddAdsPhoto.setVisibility(View.GONE);
+                    try {
+                        imageBitmap = BitmapFactory.decodeStream(getApplicationContext().getContentResolver().openInputStream(result));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     binding.imgAdvertisement.setImageBitmap(imageBitmap);
+                    binding.tvAddAdsPhoto.setVisibility(View.GONE);
                 }
             }
         });

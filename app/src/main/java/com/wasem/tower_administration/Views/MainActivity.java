@@ -80,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),AdvertisementActivity.class);
             startActivity(intent);
         }
+        else if (item.getItemId() == R.id.menu_change_password_activity) {
+            Intent intent = new Intent(getApplicationContext(),ChangePasswordActivity.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 
