@@ -43,7 +43,18 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        users.clear();
     }
 
     @Override

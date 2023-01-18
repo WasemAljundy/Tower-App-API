@@ -135,7 +135,6 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, String.valueOf(i), Toast.LENGTH_SHORT).show();
         checkSpinnerCategory(i);
     }
 
@@ -161,29 +160,11 @@ public class AddOperationActivity extends AppCompatActivity implements AdapterVi
     private void employeeActorSpinnerInitialize(){
         employeeActorSpinnerAdapter = new EmployeeActorSpinnerAdapter(employeeList);
         binding.spinnerActor.setAdapter(employeeActorSpinnerAdapter);
-        binding.spinnerActor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(AddOperationActivity.this, String.valueOf(adapterView.getSelectedItemId()), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
     }
 
     private void usersActorSpinnerInitialize(){
         usersActorSpinnerAdapter = new UsersActorSpinnerAdapter(userList);
         binding.spinnerActor.setAdapter(usersActorSpinnerAdapter);
-        binding.spinnerActor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(AddOperationActivity.this, String.valueOf(adapterView.getSelectedItemId()), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
     }
 
     private void getSelectedDate() {

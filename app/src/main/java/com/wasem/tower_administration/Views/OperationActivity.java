@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -40,7 +41,24 @@ public class OperationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOperationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        operations.clear();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -56,12 +74,6 @@ public class OperationActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        adapter.notifyDataSetChanged();
     }
 
     private void initializeView() {
@@ -121,6 +133,5 @@ public class OperationActivity extends AppCompatActivity {
             }
         });
     }
-
 
 }

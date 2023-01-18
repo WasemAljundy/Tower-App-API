@@ -45,7 +45,18 @@ public class EmployeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityEmployeeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        employees.clear();
     }
 
     @Override

@@ -38,7 +38,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        categories.clear();
     }
 
     @Override

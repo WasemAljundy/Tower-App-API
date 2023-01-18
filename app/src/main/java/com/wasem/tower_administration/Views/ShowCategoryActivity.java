@@ -31,7 +31,18 @@ public class ShowCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityShowCategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initializeView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        categoryShows.clear();
     }
 
     @Override
